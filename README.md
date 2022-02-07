@@ -1,5 +1,5 @@
 # AWS Terraform & Terratest
-[![Tests](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yml/badge.svg)](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yml)
+[![Tests](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yaml/badge.svg)](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yaml)
 
 ## Prerequisites
 
@@ -72,7 +72,7 @@ storage = [
         terraform apply -auto-approve
 
 
-* Destory Terraform Resources (Optional)
+* Destroy Terraform Resources (Optional)
 
         terraform destroy -auto-approve
 
