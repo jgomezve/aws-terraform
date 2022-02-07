@@ -4,7 +4,7 @@ resource "aws_network_interface" "nic" {
   private_ips = each.value.ips
 }
 
-resource "aws_instance" "my_ec2" {
+resource "aws_instance" "ec2" {
   for_each      = { for vm in var.instances : vm.name => vm }
   ami           = each.value.ami
   instance_type = each.value.type
