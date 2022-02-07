@@ -28,4 +28,5 @@ jobs:
 
       - name: Execute Terratest
         run: |
+          cd terratest
           go test -v
