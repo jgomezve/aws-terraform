@@ -1,6 +1,12 @@
 # AWS Terraform & Terratest
 [![Tests](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yaml/badge.svg)](https://github.com/jgomezve/terraform-sandbox/actions/workflows/test.yaml)
 
+# Use Cases
+
+  * [EC2 Instance and S3 Bucket](#ec2-intance--s3-bucket)
+  * [Application Load Balance and EC2 Instances](#alb-and-ec2-instances)
+
+
 ## Prerequisites
 
 * Make sure to have Go 1.17 installed on your computer
@@ -15,9 +21,7 @@
 
 > **_NOTE:_**:  More information here [AWS Terraform provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
-## Execution - Use Case EC2 Intance & S3 Bucket
-
-### Terraform
+## EC2 Instance & S3 Bucket
 
 * Go to the **EC2 Instance & S3 Bucket** folder
 
@@ -80,7 +84,61 @@ storage = [
         terraform destroy -auto-approve
 
 
-### Terratest
+## ALB and EC2 Instances
+
+
+* Go to the **ALB and EC2 Instances** folder
+
+        cd alb-ec2
+
+* Initialize Terraform and the AWS provider
+
+        terraform init
+
+* Setup the EC2 Intances and Networks configuration in the file `alb-ec2/variables.auto.tfvars`. Here an example:
+
+```hcl
+alb = {
+  servers = [
+    {
+      name   = "VM1"
+      subnet = "172.16.0.0/24"
+      ami    = "ami-089c6f2e3866f0f14"
+      type   = "t2.micro"
+    },
+    {
+      name   = "VM2"
+      subnet = "172.16.1.0/24"
+      ami    = "ami-089c6f2e3866f0f14"
+      type   = "t2.micro"
+    }
+  ]
+  network = "172.16.0.0/16"
+  subnets = [
+    {
+      cidr = "172.16.0.0/24"
+      az   = "us-east-2a"
+    },
+    {
+      cidr = "172.16.1.0/24"
+      az   = "us-east-2b"
+    }
+  ]
+}
+```
+
+> **_NOTE:_**: See the `alb-ec2/variables.tf` file to check the supported schema
+
+* Execute Terraform
+
+        terraform apply -auto-approve
+
+
+* Destroy Terraform Resources (Optional)
+
+        terraform destroy -auto-approve
+
+## Terratest
 
 * Go to the `terratest` folder and download the Go dependencies
 

@@ -54,7 +54,7 @@ resource "aws_instance" "ec2_lb" {
     sudo amazon-linux-extras enable nginx1
     sudo yum -y install nginx
     sudo yum -y install python-pip
-    sudo echo "Fluglel ALB " >>  /usr/share/nginx/html/index.html
+    sudo echo "{\"name\" : \"Fluglel ALB\"}" >  /usr/share/nginx/html/index.html
     sudo systemctl start nginx.service
   EOF
 }
