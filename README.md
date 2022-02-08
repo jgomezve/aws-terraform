@@ -5,7 +5,7 @@
 
   * [EC2 Instance and S3 Bucket](#ec2-instance--s3-bucket)
   * [Application Load Balance and EC2 Instances](#alb-and-ec2-instances)
-
+  * [Validation with Terratest](#terratest)
 
 ## Prerequisites
 
