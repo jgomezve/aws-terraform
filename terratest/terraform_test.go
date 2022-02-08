@@ -1,7 +1,6 @@
 package test
 
 import (
-	"log"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/aws"
@@ -29,9 +28,7 @@ func TestTerraforEc2AndS3Tags(t *testing.T) {
 
 	s3Names := terraform.OutputList(t, terraformOptions, "s3_names")
 	for _, s3Name := range s3Names {
-		log.Println(s3Name)
 		instanceTags := aws.GetS3BucketTags(t, "us-east-2", s3Name)
-		log.Println(instanceTags)
 		assert.Equal(t, "Flugel", instanceTags["Name"])
 		assert.Equal(t, "InfraTeam", instanceTags["Owner"])
 	}
