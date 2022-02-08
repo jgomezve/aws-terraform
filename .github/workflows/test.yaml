@@ -6,11 +6,10 @@ on:
   - push
 
 jobs:
-  timeout-minutes: 15
   test:
     name: Test
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v2
       - name: Set up Go
