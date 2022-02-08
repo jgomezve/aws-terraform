@@ -13,7 +13,7 @@ func TestTerraforEc2AndS3Tags(t *testing.T) {
 	t.Parallel()
 
 	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
-		TerraformDir: "../",
+		TerraformDir: "../ec2-s3",
 	})
 
 	defer terraform.Destroy(t, terraformOptions)

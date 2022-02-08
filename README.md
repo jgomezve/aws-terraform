@@ -7,7 +7,7 @@
 
     * [Install Go](https://go.dev/doc/install)
 
-## Execution
+## Execution : Use Case EC2 Intance & S3 Bucket
 
 ### Terraform
 
@@ -23,7 +23,7 @@
 
         terraform init
 
-* Setup the EC2 Intances, Network and S3 Bucket configuration in the file `variables.auto.tfvars`. Here an example:
+* Setup the EC2 Intances, Network and S3 Bucket configuration in the file `ec2-s3/variables.auto.tfvars`. Here an example:
 
 ```hcl
 networks = [
@@ -64,8 +64,11 @@ storage = [
 ]
 ```
 
-> **_NOTE:_**: See the `variables.tf` file to check the supported schema
+> **_NOTE:_**: See the `ec2-s3/variables.tf` file to check the supported schema
 
+* Go to the workind directory
+
+        cd ec2-s3/
 
 * Execute Terraform
 
