@@ -44,8 +44,8 @@ storage = [
     name = "jgomezve-aws-bucket"
     acl  = "private"
     tags = {
-      name  = "flugel"
-      owner = "infraTeam"
+      Name  = "Flugel"
+      Owner = "InfraTeam"
     }
   }
 ]
