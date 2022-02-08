@@ -7,19 +7,23 @@
 
     * [Install Go](https://go.dev/doc/install)
 
-## Execution : Use Case EC2 Intance & S3 Bucket
-
-### Terraform
-
 * Set your AWS credentials as environmental variables 
+
 
         export AWS_ACCESS_KEY_ID="anaccesskey"
         export AWS_SECRET_ACCESS_KEY="asecretkey"
 
 > **_NOTE:_**:  More information here [AWS Terraform provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
 
+## Execution - Use Case EC2 Intance & S3 Bucket
 
-* Initialize Terraform 
+### Terraform
+
+* Go to the **EC2 Instance & S3 Bucket** folder
+
+        cd ec2-s3
+
+* Initialize Terraform and the AWS provider
 
         terraform init
 
@@ -65,10 +69,6 @@ storage = [
 ```
 
 > **_NOTE:_**: See the `ec2-s3/variables.tf` file to check the supported schema
-
-* Go to the workind directory
-
-        cd ec2-s3/
 
 * Execute Terraform
 
