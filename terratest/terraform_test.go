@@ -1,9 +1,13 @@
 package test
 
 import (
+	"crypto/tls"
+	"fmt"
 	"testing"
+	"time"
 
 	"github.com/gruntwork-io/terratest/modules/aws"
+	http_helper "github.com/gruntwork-io/terratest/modules/http-helper"
 	"github.com/gruntwork-io/terratest/modules/terraform"
 	"github.com/stretchr/testify/assert"
 )
@@ -32,4 +36,26 @@ func TestTerraforEc2AndS3Tags(t *testing.T) {
 		assert.Equal(t, "Flugel", instanceTags["Name"])
 		assert.Equal(t, "InfraTeam", instanceTags["Owner"])
 	}
+}
+
+func TestTerraforAlbAndEc2(t *testing.T) {
+	t.Parallel()
+
+	terraformOptions := terraform.WithDefaultRetryableErrors(t, &terraform.Options{
+		TerraformDir: "../alb-ec2",
+	})
+
+	defer terraform.Destroy(t, terraformOptions)
+
+	terraform.InitAndApply(t, terraformOptions)
+
+	lb_dns := terraform.Output(t, terraformOptions, "lb_dns")
+
+	time.Sleep(60 * time.Second)
+	tlsConfig := tls.Config{}
+	statusCode, body := http_helper.HttpGet(t, fmt.Sprintf("http://%s", lb_dns), &tlsConfig)
+
+	assert.Equal(t, 200, statusCode)
+	assert.NotNil(t, body)
+	assert.Equal(t, "Fluglel ALB", body)
 }

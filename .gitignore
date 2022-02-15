@@ -5,3 +5,4 @@
 *.tfplan
 *.pem
 venv/
+*.html
