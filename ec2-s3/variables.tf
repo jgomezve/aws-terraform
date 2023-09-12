@@ -4,6 +4,7 @@ variable "networks" {
     subnets = list(object({
       cidr = string
       az   = string
+      test = test
     }))
   }))
 }
